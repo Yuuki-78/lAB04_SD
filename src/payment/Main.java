@@ -1,6 +1,14 @@
 package payment;
 
+/**
+ * Lớp Client minh họa việc khởi tạo và chạy thử nghiệm hệ thống thanh toán mới.
+ */
 public class Main {
+    /**
+     * Điểm thực thi chính (Entry Point) của chương trình.
+     *
+     * @param args Tham số truyền từ dòng lệnh (nếu có).
+     */
     public static void main(String[] args) {
         PaymentService paymentService = new PaymentService();
 
@@ -22,7 +30,7 @@ public class Main {
         paymentService.setPaymentStrategy(new BankTransferPayment());
         paymentService.processPayment(1500000);
 
-        // 5. Minh họa ISP: Chỉ gọi refund() trên phương thức có hỗ trợ hoàn tiền
+        // 5. Minh họa ISP: Chỉ thực hiện hoàn tiền đối với phương thức có hỗ trợ
         if (creditCard instanceof RefundableStrategy) {
             ((RefundableStrategy) creditCard).refund(50000);
         }
